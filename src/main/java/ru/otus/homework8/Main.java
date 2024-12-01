@@ -2,12 +2,35 @@ package ru.otus.homework8;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 public class Main {
     public static void main(String[] args) {
         List<Task> tasks = generateTasks();
-        System.out.println(getTasksByStatus(tasks, "In progress"));
+
+        //1
+        System.out.println("1. Tasks in progress");
+        List<Task> tasksInProgress = getTasksByStatus(tasks, "In progress");
+        tasksInProgress.forEach(System.out::println);
+
+        //2
+        long id = 20;
+        System.out.println();
+        System.out.println("2. Has task with id = " + id);
+        System.out.println(hasTaskWithId(tasks, id));
+
+        //3
+        Map<String, List<Task>> groupedTasks = groupTasksByStatus(tasks);
+        System.out.println();
+        System.out.println(groupedTasks);
+
+        //4
+        String status = "To do";
+        long doneTasksCount = countTasksWithStatus(tasks, status);
+        System.out.println();
+        System.out.println("Tasks with " + status + " status count: " + doneTasksCount);
+
     }
 
     public static List<Task> generateTasks() {
@@ -35,9 +58,24 @@ public class Main {
         return tasks;
     }
 
-    public static List<Task> getTasksByStatus (List<Task> tasks, String status) {
+    public static List<Task> getTasksByStatus(List<Task> tasks, String status) {
         return tasks.stream()
                 .filter(t -> t.getStatus().equals(status))
                 .collect(Collectors.toList());
+    }
+
+    public static boolean hasTaskWithId(List<Task> tasks, long id) {
+        return tasks.stream()
+                .anyMatch(task -> task.getId() == id);
+    }
+
+    public static Map<String, List<Task>> groupTasksByStatus(List<Task> tasks) {
+        return tasks.stream().collect(Collectors.groupingBy(Task::getStatus));
+    }
+
+    public static long countTasksWithStatus(List<Task> tasks, String status) {
+        return tasks.stream()
+                .filter(t -> t.getStatus().equals(status))
+                .count();
     }
 }
