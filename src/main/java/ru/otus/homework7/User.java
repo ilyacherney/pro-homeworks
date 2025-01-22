@@ -6,7 +6,7 @@ public class User {
     private Long id;
     @RepositoryField
     private String login;
-    @RepositoryField
+    @RepositoryField (columnName = "pass")
     private String password;
     @RepositoryField
     private String nickname;
