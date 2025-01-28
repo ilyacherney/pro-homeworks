@@ -1,4 +1,4 @@
-package ru.otus;
+package ru.otus.homework4.lecture11;
 
 public class Main {
     public static void main(String[] args) {
