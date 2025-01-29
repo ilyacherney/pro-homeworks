@@ -25,7 +25,22 @@ public final class Box {
     // expected: "red0", "red1", ..., "red9", "green0", "green1", ..., "green9", ...
     public Iterator<String> getColorFirstIterator() {
         // TODO
-        return null;
+        return new ColorFirstIterator(this);
     }
 
+    public Matryoshka getRed() {
+        return red;
+    }
+
+    public Matryoshka getGreen() {
+        return green;
+    }
+
+    public Matryoshka getBlue() {
+        return blue;
+    }
+
+    public Matryoshka getMagenta() {
+        return magenta;
+    }
 }
