@@ -19,7 +19,7 @@ public final class Box {
     // expected: "red0", "green0", "blue0", "magenta0", "red1", "green1", "blue1", "magenta1",...
     public Iterator<String> getSmallFirstIterator() {
         // TODO
-        return null;
+        return new SmallFirstIterator(this);
     }
 
     // expected: "red0", "red1", ..., "red9", "green0", "green1", ..., "green9", ...

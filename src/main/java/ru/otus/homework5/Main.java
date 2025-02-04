@@ -32,8 +32,13 @@ public class Main {
 
         Iterator<String> iterator = box.getColorFirstIterator();
 
-        while (iterator.hasNext()) {
-            System.out.println(iterator.next());
+//        while (iterator.hasNext()) {
+//            System.out.println(iterator.next());
+//        }
+
+        Iterator<String> smallFirstiterator = box.getSmallFirstIterator();
+        while (smallFirstiterator.hasNext()) {
+            System.out.println(smallFirstiterator.next());
         }
     }
 }
