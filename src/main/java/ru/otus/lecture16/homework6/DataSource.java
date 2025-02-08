@@ -7,6 +7,7 @@ import java.util.Properties;
 
 public class DataSource {
     private static DataSource instance;
+    private static Connection connection;
 
     private DataSource() {}
 
@@ -17,12 +18,19 @@ public class DataSource {
         return instance;
     }
 
-    public Connection connect() throws ClassNotFoundException, SQLException {
+    private Connection connect() throws ClassNotFoundException, SQLException {
         String url = "jdbc:postgresql://localhost/store";
         Properties props = new Properties();
         props.setProperty("user", "postgres");
         props.setProperty("password", "123q123w");
         Connection conn = DriverManager.getConnection(url, props);
         return conn;
+    }
+
+    public Connection getConnection() throws ClassNotFoundException, SQLException {
+        if (connection == null) {
+            connection = connect();
+        }
+        return connection;
     }
 }

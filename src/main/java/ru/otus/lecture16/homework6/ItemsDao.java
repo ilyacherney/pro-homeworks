@@ -4,28 +4,58 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ItemsDao {
-    public Item select() throws SQLException, ClassNotFoundException {
-        Connection con = DataSource.getInstance().connect();
+    public List<Item> selectAll() throws SQLException, ClassNotFoundException {
+        List<Item> items = new ArrayList<Item>();
+        Connection con = DataSource.getInstance().getConnection();
         Statement statement = con.createStatement();
         String query
-                = "select name from items where id = 4";
+                = "select * from items";
         ResultSet rs = statement.executeQuery(query); // Execute query
-        rs.next();
-        String name
-                = rs.getString("name");
-        System.out.println(name);
-        return new Item(4, name, 0);
+
+        while (rs.next()) {
+            long id = rs.getLong(1);
+            String name = rs.getString("name");
+            int price = rs.getInt("price");
+            items.add(new Item(id, name, price));
+        }
+
+        System.out.println(items);
+        return items;
     }
 
     public void insert(Item item) throws SQLException, ClassNotFoundException {
 
-        Connection con = DataSource.getInstance().connect();
+        Connection con = DataSource.getInstance().getConnection();
         Statement statement = con.createStatement();
         String query = "INSERT INTO items (id, name, price) VALUES ("
-                + item.id() + ", '" + item.name() + "', " + item.price() + ")";
+                + item.getId() + ", '" + item.getName() + "', " + item.getPrice() + ")";
 
         statement.executeUpdate(query);
+    }
+
+    public void update(Item item) throws SQLException, ClassNotFoundException {
+        Connection con = DataSource.getInstance().getConnection();
+        Statement statement = null;
+        try {
+            // Создаём запрос на обновление цены для элемента с заданным id
+            String sql = "UPDATE items SET price = " + item.getPrice() + " WHERE id = " + item.getId();
+
+            statement = con.createStatement();
+            int rowsUpdated = statement.executeUpdate(sql);
+
+            if (rowsUpdated > 0) {
+                System.out.println("Обновлено " + rowsUpdated + " запись(ей) для элемента с id = " + item.getId());
+            } else {
+                System.out.println("Запись с id = " + item.getId() + " не найдена.");
+            }
+        } finally {
+            if (statement != null) {
+                statement.close();
+            }
+        }
     }
 }

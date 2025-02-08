@@ -10,6 +10,10 @@ public class Main {
 //        ItemsDao itemsDao = new ItemsDao();
 //        itemsDao.select();
         ItemsService itemsService = new ItemsService();
-        itemsService.insertOneHundredItems();
+//        itemsService.insertOneHundredItems();
+        ItemsServiceProxy proxy = new ItemsServiceProxy(itemsService);
+        proxy.insertOneHundredItems();
+
+        proxy.doublePrices();
     }
 }
