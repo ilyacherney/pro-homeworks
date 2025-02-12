@@ -6,7 +6,7 @@ public class Main {
     public static void main(String[] args) throws IOException {
         System.out.println("Application started.");
 
-        Server server = new Server();
-        server.start(8080);
+        HttpServer server = new HttpServer(8080);
+        server.start();
     }
 }
