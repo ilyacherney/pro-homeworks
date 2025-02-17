@@ -12,7 +12,7 @@ public class ClientHandler implements Runnable {
     public ClientHandler(HttpServer server, Socket socket) {
         this.server = server;
         this.socket = socket;
-        buffer = new byte[8192];
+        this.buffer = new byte[5 * 1024 * 1024];
         n = 0;
     }
 
