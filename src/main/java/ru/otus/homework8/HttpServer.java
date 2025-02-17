@@ -23,7 +23,8 @@ public class HttpServer {
             while (true) {
                 System.out.println("Server started at port: " + port);
                 Socket socket = serverSocket.accept();
-                ExecutorService executorService = Executors.newFixedThreadPool(3);
+                int threadPoolSize = Integer.parseInt(ServerProperties.getProperty("thread.pool.size"));
+                ExecutorService executorService = Executors.newFixedThreadPool(threadPoolSize);
                 executorService.execute(new ClientHandler(this, socket));
             }
         } catch (IOException e) {

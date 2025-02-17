@@ -6,7 +6,10 @@ public class Main {
     public static void main(String[] args) throws IOException {
         System.out.println("Application started.");
 
-        HttpServer server = new HttpServer(8080);
+        ServerProperties properties = new ServerProperties();
+        int port = Integer.parseInt(properties.getProperty("port"));
+
+        HttpServer server = new HttpServer(port);
         server.start();
     }
 }
