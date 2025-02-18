@@ -11,6 +11,8 @@ import java.util.concurrent.Executors;
 
 public class HttpServer {
     private int port;
+    private volatile boolean running = true;
+    private ServerSocket serverSocket;
     private static final Logger LOGGER = LogManager.getLogger(HttpServer.class.getName());
 
     public HttpServer(int port) {
@@ -19,14 +21,27 @@ public class HttpServer {
 
 
     public void start() throws IOException {
-        try (ServerSocket serverSocket = new ServerSocket(port)) {
-            while (true) {
+        try {
+            while (running) {
+                serverSocket = new ServerSocket(port);
                 System.out.println("Server started at port: " + port);
                 Socket socket = serverSocket.accept();
                 int threadPoolSize = Integer.parseInt(ServerProperties.getProperty("thread.pool.size"));
                 ExecutorService executorService = Executors.newFixedThreadPool(threadPoolSize);
                 executorService.execute(new ClientHandler(this, socket));
             }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void shutdown() {
+        running = false;
+        try {
+            if(serverSocket != null && !serverSocket.isClosed()){
+                serverSocket.close();
+            }
+            System.out.println("Server is shutting down.");
         } catch (IOException e) {
             e.printStackTrace();
         }

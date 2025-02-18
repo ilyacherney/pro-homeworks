@@ -14,6 +14,10 @@ public class HttpRequest {
     private Map<String, String> headers;
     private static final Logger LOGGER = LogManager.getLogger(HttpRequest.class.getName());
 
+    public HttpMethod getMethod() {
+        return method;
+    }
+
     public Exception getException() {
         return exception;
     }
