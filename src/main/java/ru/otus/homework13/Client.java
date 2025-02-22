@@ -1,11 +1,9 @@
 package ru.otus.homework13;
 
 import jakarta.persistence.*;
-import lombok.Data;
 
 @Entity
 @Table (name = "clients")
-@Data
 public class Client {
 
     @Id
@@ -14,6 +12,15 @@ public class Client {
 
     private String firstName;
 
-    @OneToOne
+    @OneToOne (cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "address_id")
     private Address address;
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
 }

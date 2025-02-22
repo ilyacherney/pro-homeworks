@@ -1,11 +1,9 @@
 package ru.otus.homework13;
 
 import jakarta.persistence.*;
-import lombok.Data;
 
 @Entity
 @Table(name = "phones")
-@Data
 public class Phone {
 
     @Id
@@ -13,4 +11,16 @@ public class Phone {
     private Long id;
 
     private String number;
+
+    @ManyToOne
+    @JoinColumn(name = "address_id", nullable = false)
+    private Address address;
+
+    public void setNumber(String number) {
+        this.number = number;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
 }

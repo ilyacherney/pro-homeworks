@@ -1,13 +1,11 @@
 package ru.otus.homework13;
 
 import jakarta.persistence.*;
-import lombok.Data;
 
 import java.util.Set;
 
 @Entity
 @Table (name = "addresses")
-@Data
 public class Address {
 
     @Id
@@ -16,6 +14,14 @@ public class Address {
 
     private String street;
 
-    @OneToMany
-    private Set<Phone> phone;
+    @OneToMany(mappedBy = "address", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<Phone> phones;
+
+    public void setStreet(String street) {
+        this.street = street;
+    }
+
+    public void setPhones(Set<Phone> phones) {
+        this.phones = phones;
+    }
 }
