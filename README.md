@@ -1,5 +1,5 @@
-- [ ] Прочитать файл sms.json
-- [ ] Десериализовать файл в Java class
+- [X] Прочитать файл sms.json
+- [X] Десериализовать файл в Java class
 - [ ] Создать новую структуру: список из полей <chat_sessions.chat_identifier> - <chat_sessions.members.last> - <chat_sessions.messages.belong_number> - <chat_sessions.messages.send_date> - <chat_sessions.messages.text> с группировкой по полю <chat_sessions.messages.belong_number> и сортировкой от более старых сообщений к более новым
 - [ ] Данные дублироваться не должны (файл должен получиться как можно меньше)
 - [ ] Сериализовать полученные данные и записать их в файл (текстовой или бинарный)
