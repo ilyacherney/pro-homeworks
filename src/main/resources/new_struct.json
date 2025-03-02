@@ -1,0 +1,27 @@
+{
+  "messages" : [ {
+    "chatSessionsMessagesBelongNumber" : "+79219213267",
+    "chatSessionsMessagesSendDate" : "03-31-2023 14:09:19",
+    "chatSessionsMessagesText" : "PROBLEM CRITICAL - There is hight price of the order",
+    "chatSessionsChatIdentifier" : "Apple",
+    "chatSessionsMembersLast" : "Saint-Petersburg"
+  }, {
+    "chatSessionsMessagesBelongNumber" : "+79215553267",
+    "chatSessionsMessagesSendDate" : "03-31-2023 14:53:34",
+    "chatSessionsMessagesText" : "PROBLEM WARNING - No more free space on the disc",
+    "chatSessionsChatIdentifier" : "Apple",
+    "chatSessionsMembersLast" : "Saint-Petersburg"
+  }, {
+    "chatSessionsMessagesBelongNumber" : "+79215553267",
+    "chatSessionsMessagesSendDate" : "03-31-2023 15:09:15",
+    "chatSessionsMessagesText" : "PROBLEM CRITICAL - The weather is not good for today",
+    "chatSessionsChatIdentifier" : "Apple",
+    "chatSessionsMembersLast" : "Saint-Petersburg"
+  }, {
+    "chatSessionsMessagesBelongNumber" : "+79219213267",
+    "chatSessionsMessagesSendDate" : "03-31-2023 15:53:28",
+    "chatSessionsMessagesText" : "PROBLEM WARNING - It's raining like dogs and cats",
+    "chatSessionsChatIdentifier" : "Apple",
+    "chatSessionsMembersLast" : "Saint-Petersburg"
+  } ]
+}
