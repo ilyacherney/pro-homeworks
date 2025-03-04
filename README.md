@@ -1,4 +1,4 @@
-- [ ] Развернуть ActiveMQ в Docker
-- [ ] Организовать подключение к ActiveMQ через Spring JMS
-- [ ] Реализовать возможность отправки и получения объектов типа Message(UUID uuid, String text) из топика ActiveMQ
-- [ ] Для отправки сообщений реализуйте отдельный тестовый endpoint
+- [x] Развернуть ActiveMQ в Docker
+- [x] Организовать подключение к ActiveMQ через Spring JMS
+- [x] Реализовать возможность отправки и получения объектов типа Message(UUID uuid, String text) из топика ActiveMQ
+- [x] Для отправки сообщений реализуйте отдельный тестовый endpoint

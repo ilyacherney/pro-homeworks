@@ -1,5 +1,8 @@
 package ru.otus.homework17;
 
+import jakarta.jms.TextMessage;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -16,5 +19,12 @@ public class Controller {
     }
 
     @PostMapping("/jms")
-    public void jms(@RequestBody String message) {}
+    public ResponseEntity<?> jms(@RequestBody Message message) {
+        try {
+            producer.produce(message);
+            return new ResponseEntity<>("Message sent", HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>("Message not sent", HttpStatus.BAD_REQUEST);
+        }
+    }
 }

@@ -12,7 +12,7 @@ import org.springframework.jms.core.JmsTemplate;
 @EnableJms
 public class JmsConfig {
 
-    @Bean
+    @Bean(name = "topicListenerFactory")
     public JmsListenerContainerFactory<?> jmsListenerContainerFactory(ConnectionFactory connectionFactory) {
         DefaultJmsListenerContainerFactory factory = new DefaultJmsListenerContainerFactory();
         factory.setConnectionFactory(connectionFactory);
